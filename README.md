@@ -16,7 +16,7 @@ Windows işletim sistemine bir program eklediğimizde programın dosyaları Prog
 
 Özetle Linux sisteminde her şey bir dosya(root-kök dosyası(/)) içerisinde yer alır. Ve bu dosya sistemi hiyerarşik bir yapıda bulunur. Tüm bu tek kök dosya sistemi ve hiyerarşik yapılanmanın amacı çok kullanıcılı ve dağıtık bir sistemi güvenli ve kolay bir şekilde kurup yönetebilmektir. Örneğin x_bilgisayarı'na /bin dizini bağlanır, bir diğer bilgisayara /var dizini içerisindeki e-posta sunucusunun dosyalarının olduğu dizin, bir diğerine de /home dizini bağlanabilir.
 
-Bu sayede fiziksel olarak pek çok bilgisayara dağılmış olan bir sunucu tek bir kök dosya sisteminden, sanki tek bir bilgisayarmış gibi yönetilerek kullanılabilir. Bu sayede hem iş yükü dağılımı yapılarak sistem performansı arttırılmış olur hem de yetkilendirme ve yönetim kısıtlamaları dahilinde sistemin ayrı ayrı parçalara dağılımı ile sisteme ekstra güvenlik önlemi katılmış olunur. Biraz daha net anlamak adına aşağıdaki görseli inceleyebilirsiniz.
+Bu sayede fiziksel olarak pek çok bilgisayara dağılmış olan bir sunucu tek bir kök dosya sisteminden, sanki tek bir bilgisayarmış gibi yönetilerek kullanılabilir. Bu sayede hem iş yükü dağılımı yapılarak sistem performansı arttırılmış olur hem de yetkilendirme ve yönetim kısıtlamaları dahilinde sistemin ayrı ayrı parçalara dağılımı ile sisteme ekstra güvenlik önlemi katılmış olunur.
 
 Şimdi çoklu kullanıcılar için neden güvenli olduğunu daha iyi anladık ama ben sadece kişisel bilgisayarımdan kullanacağım bu dosya sistemi benim için gereksiz." diyebilirsiniz. Ancak bu dosya sistemi tekil kullanıcılar için de sağladığı güvenlik özellikleri nedeniyle gerekli bir sistemdir.
 
@@ -110,7 +110,7 @@ Linux'ta normal kullanıcının kullanabileceği komutlarla, kök kullanıcını
 
 ### /usr
 
-Unix ilk çıktığında, kullanıcılara ait ev klasörleri, /usr altında tutulurdu. Örneğin; "burak" isimli bir kullanıcının ev klasörü /usr/burak şeklindeydi. Bu yöntem zamanla değişti ve /home klasörü doğmuş oldu. /usr klasörü hâlâ çok önemli bir yapıdır ve işletim sisteminizde kullandığınız her şeyle ilişkisi bulunur.
+Unix ilk çıktığında, kullanıcılara ait ev klasörleri, /usr altında tutulurdu. Örneğin; "x" isimli bir kullanıcının ev klasörü /usr/burak şeklindeydi. Bu yöntem zamanla değişti ve /home klasörü doğmuş oldu. /usr klasörü hâlâ çok önemli bir yapıdır ve işletim sisteminizde kullandığınız her şeyle ilişkisi bulunur.
 
 Kurduğunuz pek çok program /usr içine kurulur. Her ne kadar Linux'ta kurulan bir programa ait tüm dosyalar usr dizini içine atılmıyor olsa da usr dizini Windows'taki Program Files klasörü ile benzer görev görmektedir. /opt adresi işletim sistemi dışında gelen 3.parti programlar içindir. Fakat işletim sistemi aracılığıyla ya da paket yönetim sistemlerini kullanarak yüklediğiniz her şey /usr altına aktarılır. Aynı zamanda yüklediğiniz programların çalışmak için ihtiyaç duyacağı kütüphane dosyaları, /usr/lib altındadır.
 
