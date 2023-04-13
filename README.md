@@ -123,3 +123,76 @@ Log dosyaları, e-posta ve yazıcı kuyrukları gibi değişken sistem bilgileri
 ### /tmp
 
 Geçici dosyalar içindir. Birçok program, burayı geçici depolama alanı olarak kullanır. /tmp klasörünün içeriği genellikle KB'lar mertebesinde kalır ve genellikle işletim sistemi yeniden başlarken içindeki dosyalar silinir. Her ne kadar tmp klasörü geçici dosyalar için de olsa bu klasör altında bulunan dosyaları, ne yaptığınızdan emin değilseniz, kesinlikle silmemelisiniz! Aksi taktirde sisteminizde ya da bazı programlarda birçok sorunla karşılaşabilirsiniz. Sistemi reboot ettiğinizde içindekiler siliniyor. Hacking saldırılarında da aslında yetkisini yükseltmek istediğimiz bir soyayı bu dizine koymamız avantaj sağlıyor. Gerekli  exploitleri burda kullanabiliyoruz. Kısaca yetki yükseltmekten bahsedecek olursam ilerde göreceğiz kullanıcılar çeşitli yetkileri olacak read, write, execute şeklinde ben bu üç yetkiye de sahipsem tam erişim sağlayabiliyorum ve chmod dediğim komutla bunu değiştirebiliyorum dediğim gibi tmp dizininde olmam bana avantaj sağlamış oluyor. Çünkü siliniyor.
+
+Şimdi dosya komutlarına biraz bakacağız. Geçen ders temel dosyaları biliyorsunuz.
+
+`touch` komutu dosya oluşturuyordu
+
+3 dosya birden oluşturmak için kullanacağımız komut `touch x1 x2 x3`
+
+Nano diyip içine bir şeyler yazdıktan sonra cat ile okumayı göstereceğim
+
+Cat içinde yine çoklu dosya okuyabiliyorum ` cat x1 x2 x3 `
+
+Nano ekranı açılmadan dosya içeriğini değiştirebiliyorum `cat > x1`
+
+Ancak içindeki eski verileri silerek yeni yazdığınız verileri girer
+
+Eğer eski veriler silinmesin istiyorsanız kullanacağınız komut `cat >> x1` olmalıdır.
+
+`Cat x1` dediğimizde görüldüğü gibi içindekiler silinmedi
+
+Bu komut ise bildiğimiz gibi listeleme yapıyor `ls`
+
+çıktıları liste adındaki bir dosyaya atmak için `ls -ls > liste` komutunu kullanıyoruz
+
+Yeni dosya oluşturmadan bulunduğu dosyaya aktarmak için `ls -ls>>`
+
+Bir dosyadaki  veriyi başka bir dosyaya kopyalamak için `cat x1 > x2`
+Daha detaylı bakmak için ilk derste bahsettiğim man page dediğimiz sayfaya bakabilirsiniz
+
+Bu kodumuz ise bize içeriği tersten okuyor, nerede işime yarayacak demeyin bazen bu şekilde encrypte edilmiş oluyor bu komutu bildiğinizde işiniz çok kolaylaşıyor. `rev x1`
+
+Sıradaki komutuz ise bize girdileri direkt önümüze çıkarıyor `echo`
+Örneğin şimdi yazacağımız kod bize hello world yazacaktır. `echo "hello world"`
+
+x1'in içine atmak için ise` echo "hello world" >> x1`'i kullanıyoruz. Yine içindekileri silmesin diye iki tane kullandım.
+
+`echo`  yerine `echo * ls` kullanabiliriz farkını görelim.
+
+(`*`) işareti joker işaretidir. `*` ile burada dizindeki tüm dizinleri kapsamış olduk. Echo x* dersem bana x ile başlayan dosyaları çıktı olarak verecektir.
+
+Bir komutun çıktılarını dizin olarak değil de metin olarak çıksın istiyorum mesela
+`echo 'ls' ` normaliyle farkını gördünüz
+
+`echo $(ls) ` yine aynı işlevi görüyor
+
+Yine metin dosyalarını terminalden çıkmadan okumak için bi komut var 
+`more /etc/profile` Bu dosya içeriğini buradan okuyabildik.
+
+Daha az halini görmek içinse `less /etc/profile ` kodunu kullanıyoruz.
+
+'q' yu kullanarak buradan çıkabilirim.
+
+Satırları numaralandırarak almak içinse bu kodu kullanırız.  ` nl /etc/profile` 
+
+Dosya çıktılarını alfabetik sırayla almak içinse `sort /etc/profile` kodunu kullanıyoruz.
+
+Tersten sıralamak için `sort -r` kodunu kullanıyoruz.
+### KULLANICI OLUŞTURMA VE SİLME
+
+`sudo useradd -m sulin` kodu ile oluşturdu.
+
+`cat /etc/passwd` dediğimde en altta kullanıcıyı görebiliyoruz şu an parolası yok.
+
+`sudo passwd sulin` dedim parola girdim.
+
+`sudo cat /etc/shadow`burada parola hashleri tutuluyordu gördüğünüz gibi oluşturulmuş.
+
+`ls -a `pek bir şeyi yok kullanıcı komut çalıştırmış mı vs onun dosyaları var.
+
+`sudo deluser –remove-home sulin` kodu ile kullanıcıyı silebilirim.
+
+`cat /etc/passwd` baktığımızda silindiğini görüyoruz.
+
+`sudo Passwd kali` diyerek ilk girdiğimiz kalinin şifresini değiştirebiliyoruz böylece kullanıcı oluşturup silebiliyoruz.
